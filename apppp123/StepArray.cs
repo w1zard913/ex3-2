@@ -5,19 +5,24 @@ namespace Arrays
     internal class StepArray : BaseArray
     {
         public int[][] array;
-        public StepArray(int rows, int[] columns, bool IsUserInput = false)
+        public StepArray()
         {
+            Console.WriteLine("Вы бы хотели заполнить массив самостоятельно?");
+            Console.WriteLine("1 - самостоятельно, 2 - случайными числами");
+            int answer = int.Parse(Console.ReadLine());
+            bool IsUserInput = answer == 1;
+            
             if (IsUserInput)
             {
-                this.array = this.UserFill(rows, columns);
+                this.UserFill();
             }
             else
             {
-                this.array = this.RandomFill(rows, columns);
+                this.RandomFill();
             }
         }
 
-        public void DisplayArray()
+        public override void DisplayArray()
         {
             for (int i = 0; i < this.array.Length; i++)
             {
@@ -30,8 +35,17 @@ namespace Arrays
             }
         }
 
-        public int[][] RandomFill(int rows, int[] columns)
+        public override void RandomFill()
         {
+            Console.WriteLine("Сколько рядов вы бы хотели, чтобы было в массиве?");
+            int rows = int.Parse(Console.ReadLine());
+            int[] columns = new int[rows];
+            for (int i = 0; i < rows; i++)
+            {
+                Console.WriteLine($"Сколько элементов вы хотите в {i} ряду?");
+                columns[i] = int.Parse(Console.ReadLine());
+            }
+
             Random random = new Random();
             int[][] array = new int[rows][];
             for (int i = 0; i < rows; i++)
@@ -42,22 +56,33 @@ namespace Arrays
                     array[i][j] = random.Next(1, 1001);
                 }
             }
-            return array;
+            this.array = array;
         }
-        public int[][] UserFill(int rows, int[] columns)
+        public override void UserFill()
         {
+
+            Console.WriteLine("Сколько рядов вы бы хотели, чтобы было в массиве?");
+            int rows = int.Parse(Console.ReadLine());
+            int[] columns = new int[rows];
+            for (int i = 0; i < rows; i++)
+            {
+                Console.WriteLine($"Сколько элементов вы хотите в {i} ряду?");
+                columns[i] = int.Parse(Console.ReadLine());
+            }
+
             int[][] array = new int[rows][];
             for (int i = 0; i < rows; i++)
             {
+                array[i] = new int[columns[i]];
                 for (int j = 0; j < columns[i]; j++)
                 {
                     array[i][j] = int.Parse(Console.ReadLine());
                 }
             }
-            return array;
+            this.array = array;
         }
 
-        public float Mean()
+        public override float Mean()
         {
             float sum = 0.0f;
             int count = 0;

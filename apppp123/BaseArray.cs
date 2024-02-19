@@ -4,14 +4,11 @@ namespace Arrays
 {
     internal abstract class BaseArray
     {
-        protected BaseArray() { }
-        protected void DisplayArray() { }
-        protected void UserFill () { }
-        protected void RandomFill() { }
-        protected float Mean()
-        {
-            return 0;
-        }
+        public BaseArray() { }
+        public abstract void DisplayArray();
+        public abstract void UserFill();
+        public abstract void RandomFill();
+        public abstract float Mean();
 
     }
 }

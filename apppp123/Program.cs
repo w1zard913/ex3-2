@@ -11,12 +11,7 @@ class Program
         int answer = int.Parse(Console.ReadLine());
         if (answer == 1)
         {
-            Console.WriteLine("Сколько элементов вы бы хотели, чтобы было в массиве?");
-            int count = int.Parse(Console.ReadLine());
-            Console.WriteLine("Вы бы хотели заполнить массив самостоятельно?");
-            Console.WriteLine("1 - самостоятельно, 2 - случайными числами");
-            answer = int.Parse(Console.ReadLine());
-            LineArray array = new LineArray(count, answer == 1);
+            LineArray array = new LineArray();
             while (true)
             {
                 Console.WriteLine("Выберите действие:");
@@ -47,14 +42,7 @@ class Program
 
         else if (answer == 2)
         {
-            Console.WriteLine("Сколько рядов вы бы хотели, чтобы было в массиве?");
-            int rows = int.Parse(Console.ReadLine());
-            Console.WriteLine("Сколько колонок вы бы хотели, чтобы было в массиве?");
-            int columns = int.Parse(Console.ReadLine());
-            Console.WriteLine("Вы бы хотели заполнить массив самостоятельно?");
-            Console.WriteLine("1 - самостоятельно, 2 - случайными числами");
-            answer = int.Parse(Console.ReadLine());
-            MatrixArray array = new MatrixArray(rows, columns, answer == 1);
+            MatrixArray array = new MatrixArray();
             while (true)
             {
                 Console.WriteLine("Выберите действие:");
@@ -81,18 +69,7 @@ class Program
 
         else if (answer == 3)
         {
-            Console.WriteLine("Сколько рядов вы бы хотели, чтобы было в массиве?");
-            int rows = int.Parse(Console.ReadLine());
-            int[] columns = new int[rows];
-            for (int i = 0; i < rows; i++)
-            {
-                Console.WriteLine($"Сколько элементов вы хотите в {i} ряду?");
-                columns[i] = int.Parse(Console.ReadLine());
-            }
-            Console.WriteLine("Вы бы хотели заполнить массив самостоятельно?");
-            Console.WriteLine("1 - самостоятельно, 2 - случайными числами");
-            answer = int.Parse(Console.ReadLine());
-            StepArray array = new StepArray(rows, columns, answer == 1);
+            StepArray array = new StepArray();
             while (true)
             {
                 Console.WriteLine("Выберите действие:");

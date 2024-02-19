@@ -2,43 +2,54 @@
 
 namespace Arrays
 {
-    class LineArray : BaseArray
+    sealed class LineArray : BaseArray
     {
         public int[] array;
-        public LineArray(int count, bool IsUserInput = false)
+        public LineArray()
         {
+            Console.WriteLine("Вы бы хотели заполнить массив самостоятельно?");
+            Console.WriteLine("1 - самостоятельно, 2 - случайными числами");
+            int answer = int.Parse(Console.ReadLine());
+            bool IsUserInput = answer == 1;
+
             if (IsUserInput)
             {
-                this.array = this.UserFill(count);
+                this.UserFill();
             }
             else
             {
-                this.array = this.RandomFill(count);
+                this.RandomFill();
             }
         }
 
-        public int[] RandomFill(int count)
+        public override void RandomFill()
         {
+            Console.WriteLine("Сколько элементов вы бы хотели, чтобы было в массиве?");
+            int count = int.Parse(Console.ReadLine());
+
             Random random = new Random();
             int[] array = new int[count];
             for (int i = 0; i < count; i++)
             {
                 array[i] = random.Next(1, 1001);
             }
-            return array;
+            this.array = array;
         }
 
-        public int[] UserFill(int count)
+        public override void UserFill()
         {
+            Console.WriteLine("Сколько элементов вы бы хотели, чтобы было в массиве?");
+            int count = int.Parse(Console.ReadLine());
+
             int[] array = new int[count];
             for (int i = 0; i <= count; i++)
             {
                 array[i] = int.Parse(Console.ReadLine());
             }
-            return array;
+            this.array = array;
         }
 
-        public new float Mean()
+        public override float Mean()
         {
             int s = 0;
             for (int i = 0; i < this.array.Length; i++)
@@ -76,7 +87,7 @@ namespace Arrays
             this.array = result;
         }
 
-        public void DisplayArray()
+        public override void DisplayArray()
         {
             Console.Write("[");
             for (int i = 0; i < this.array.Length; i++)
