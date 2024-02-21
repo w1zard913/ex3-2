@@ -2,7 +2,7 @@
 
 namespace Arrays
 {
-    internal class MatrixArray : BaseArray
+    internal class MatrixArray : BaseArray, IMatrixArray
     {
         public int[,] array;
         public MatrixArray()

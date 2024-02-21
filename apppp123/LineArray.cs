@@ -2,7 +2,7 @@
 
 namespace Arrays
 {
-    sealed class LineArray : BaseArray
+    sealed class LineArray : BaseArray, ILineArray
     {
         public int[] array;
         public LineArray()

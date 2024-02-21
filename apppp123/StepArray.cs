@@ -2,7 +2,7 @@
 
 namespace Arrays
 {
-    internal class StepArray : BaseArray
+    internal class StepArray : BaseArray, IStepArray
     {
         public int[][] array;
         public StepArray()
